@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 from brian2 import *
 
+##########################################################
+b_val = 60 ##### 60 for Up/Down, 1 for AI state ##########
+##########################################################
 
 #########################################################
 #Define conditions for simulation
@@ -52,7 +55,7 @@ Tsyn:second
 ########################################################
 #Create populations:
 
-	# Population 1 - FS
+# Population 1 - FS
 
 b1 = 0.0*pA #no adaptation for FS
 #generate the population
@@ -80,7 +83,7 @@ G1.Tsyn =5.*ms
 
 
 # Population 2 - RS
-b2 = 60*pA
+b2 = b_val*pA 
 #generate the population
 G2 = NeuronGroup(N2, eqs, threshold='v > -40.0*mV', reset='v = -55*mV; w += b2', refractory='5*ms',  method='heun')
 #set values:
